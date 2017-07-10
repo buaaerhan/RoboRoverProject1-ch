@@ -3,46 +3,46 @@
 # Search and Sample Return Project
 ![alt text][image_0] 
 
-This project is modeled after the [NASA sample return challenge](https://www.nasa.gov/directorates/spacetech/centennial_challenges/sample_return_robot/index.html) and it will give you first hand experience with the three essential elements of robotics, which are perception, decision making and actuation.  You will carry out this project in a simulator environment built with the Unity game engine.  
+本项目是[NASA sample return challenge](https://www.nasa.gov/directorates/spacetech/centennial_challenges/sample_return_robot/index.html)项目的模型，且可以让你初步体验机器人相关的要点, 视角转换，决策和相应的动作。 你可以使用Unity游戏引擎来完成这个项目。  
 
-## The Simulator
-The first step is to download the simulator build that's appropriate for your operating system.  Here are the links for [Linux](https://s3-us-west-1.amazonaws.com/udacity-robotics/Rover+Unity+Sims/Linux_Roversim.zip), [Mac](	https://s3-us-west-1.amazonaws.com/udacity-robotics/Rover+Unity+Sims/Mac_Roversim.zip), or [Windows](https://s3-us-west-1.amazonaws.com/udacity-robotics/Rover+Unity+Sims/Windows_Roversim.zip).  
+## 模拟器
+首先下载对应操作系统的模拟器，不同系统下的下载链接如下： [Linux](https://s3-us-west-1.amazonaws.com/udacity-robotics/Rover+Unity+Sims/Linux_Roversim.zip), [Mac](	https://s3-us-west-1.amazonaws.com/udacity-robotics/Rover+Unity+Sims/Mac_Roversim.zip), or [Windows](https://s3-us-west-1.amazonaws.com/udacity-robotics/Rover+Unity+Sims/Windows_Roversim.zip).  
 
-You can test out the simulator by opening it up and choosing "Training Mode".  Use the mouse or keyboard to navigate around the environment and see how it looks.
+你可以启动测试模拟器，选择“Training Mode”。  使用鼠标或者键盘查看到处查看环境。
 
-## Dependencies
-You'll need Python 3 and Jupyter Notebooks installed to do this project.  The best way to get setup with these if you are not already is to use Anaconda following along with the [RoboND-Python-Starterkit](https://github.com/ryan-keenan/RoboND-Python-Starterkit). 
+## 依赖项
+你需要安装Python 3以及Jupyter Notebooks。 最好的方法就是使用Anaconda，如下[RoboND-Python-Starterkit](https://github.com/ryan-keenan/RoboND-Python-Starterkit). 
 
 
-Here is a great link for learning more about [Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111)
+下面是一个关于Anaconda和Jupyter Notebook的教程[Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111)
 
-## Recording Data
-I've saved some test data for you in the folder called `test_dataset`.  In that folder you'll find a csv file with the output data for steering, throttle position etc. and the pathnames to the images recorded in each run.  I've also saved a few images in the folder called `calibration_images` to do some of the initial calibration steps with.  
+## 记录数据
+已经给出一些事先保存好的数据，放在`test_dataset`文件夹下。 在此文件夹下你可以找到一个csv文件，里面包含了一些记录数据和每次运行所记录的图片路径。 同样地，为做一些初始标定工作，`calibration_images`文件夹下也保存了一些图片。  
 
-The first step of this project is to record data on your own.  To do this, you should first create a new folder to store the image data in.  Then launch the simulator and choose "Training Mode" then hit "r".  Navigate to the directory you want to store data in, select it, and then drive around collecting data.  Hit "r" again to stop data collection.
+首先要做的是记录你自己的数据。 第一要创建一个新的文件夹用来保存图片。 然后启动模拟器，选择“Training Mode”， 按下"r"键，用键盘导航到你所想要记录数据的区域，然后在此区域运动并收集数据。再次按下“r”键，停止收集数据。
 
-## Data Analysis
-Included in the IPython notebook called `Rover_Project_Test_Notebook.ipynb` are the functions from the lesson for performing the various steps of this project.  The notebook should function as is without need for modification at this point.  To see what's in the notebook and execute the code there, start the jupyter notebook server at the command line like this:
+## 数据分析
+`Rover_Project_Test_Notebook.ipynb`文档中包含了课程中出现过的函数，用来执行本项目中的各种操作。 文档中的函数不经修改就能正常执行， 要查看文档中的具体内容或者要执行里面的代码，用下面的命令启动jupyter notebook服务器：
 
 ```sh
 jupyter notebook
 ```
 
-This command will bring up a browser window in the current directory where you can navigate to wherever `Rover_Project_Test_Notebook.ipynb` is and select it.  Run the cells in the notebook from top to bottom to see the various data analysis steps.  
+这个命令将会打开浏览器窗口，并定位到当前目录下，你可以选择进入`Rover_Project_Test_Notebook.ipynb`文档所在的目录并选择打开文档。 从上到下依次运行里面的代码块，查看数据分析步骤。  
 
-The last two cells in the notebook are for running the analysis on a folder of test images to create a map of the simulator environment and write the output to a video.  These cells should run as-is and save a video called `test_mapping.mp4` to the `output` folder.  This should give you an idea of how to go about modifying the `process_image()` function to perform mapping on your data.  
+最后两个代码块是为了从一个文件夹中读取并处理所有的图片，创建模拟器环境并输出视频。 这些代码块可以直接运行并保存成一个名为`test_mapping.mp4`的视频到`output`文件夹。 这将会给你一些关于怎样修改`process_image()`能够更好地建图的主意。  
 
-## Navigating Autonomously
-The file called `drive_rover.py` is what you will use to navigate the environment in autonomous mode.  This script calls functions from within `perception.py` and `decision.py`.  The functions defined in the IPython notebook are all included in`perception.py` and it's your job to fill in the function called `perception_step()` with the appropriate processing steps and update the rover map. `decision.py` includes another function called `decision_step()`, which includes an example of a conditional statement you could use to navigate autonomously.  Here you should implement other conditionals to make driving decisions based on the rover's state and the results of the `perception_step()` analysis.
+## 自主导航
+`drive_rover.py`是你在自动导航模式下将会使用到的文件。 这个脚本文件调用`perception.py` 和 `decision.py`中的函数。 上面.pynb文件中的函数都包含在`perception.py`文件中，你所要做的就是合理填充`perception_step()`函数并更新小车状态。 `decision.py`文件包含了另外一个名为`decision_step()`的函数, 其包含了一些示例条件，用以处理自主导航过程中的情况。 这里你应当添加其它的条件，并基于`perception_step()`中输出的小车状态做出相应的决定和动作。
 
-`drive_rover.py` should work as is if you have all the required Python packages installed. Call it at the command line like this: 
+如果你已经安装好了相应的Python包，则`drive_rover.py`应当正常运行。 在命令行中运行： 
 
 ```sh
 python drive_rover.py
 ```  
 
-Then launch the simulator and choose "Autonomous Mode".  The rover should drive itself now!  It doesn't drive that well yet, but it's your job to make it better!  
+然后启动模拟器，选择"Autonomous Mode"。 小车应该会自己行驶! 当然，行驶过程中可能会遇到一些问题，你的工作就是让它行驶得更好!  
 
-**Note: running the simulator with different choices of resolution and graphics quality may produce different results!  Make a note of your simulator settings in your writeup when you submit the project.**
+**注意: 运行模拟器时如果选择不同的分辨率和图像质量，产生的结果可能会不同！ 因此，在你提交项目时，请注明你的模拟器设置。**
 
 
